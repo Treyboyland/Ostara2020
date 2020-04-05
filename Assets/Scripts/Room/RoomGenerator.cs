@@ -11,6 +11,9 @@ public class RoomGenerator : MonoBehaviour
     [SerializeField]
     Room goalRoom;
 
+    [SerializeField]
+    Room startRoom;
+
     Dictionary<Vector2Int, OpenDoors> map = new Dictionary<Vector2Int, OpenDoors>();
 
     Dictionary<Vector2Int, Room> chosenRooms = new Dictionary<Vector2Int, Room>();
@@ -89,9 +92,18 @@ public class RoomGenerator : MonoBehaviour
         }
         else
         {
-            currentRoom = currentLocation != goalLocation ?
-                 Instantiate(possibleRooms[UnityEngine.Random.Range(0, possibleRooms.Count)]) :
-                 Instantiate(goalRoom);
+            if (currentLocation == new Vector2Int())
+            {
+                currentRoom = Instantiate(startRoom);
+            }
+            else if (currentLocation == goalLocation)
+            {
+                currentRoom = Instantiate(goalRoom);
+            }
+            else
+            {
+                currentRoom = Instantiate(possibleRooms[UnityEngine.Random.Range(0, possibleRooms.Count)]);
+            }
             chosenRooms.Add(currentLocation, currentRoom);
         }
 
