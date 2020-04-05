@@ -57,6 +57,23 @@ public struct OpenDoors
         }
     }
 
+    public bool IsOpen(Room.PlayerExit door)
+    {
+        switch (door)
+        {
+            case Room.PlayerExit.TOP:
+                return Top;
+            case Room.PlayerExit.BOTTOM:
+                return Bottom;
+            case Room.PlayerExit.LEFT:
+                return Left;
+            case Room.PlayerExit.RIGHT:
+                return Right;
+            default:
+                return false;
+        }
+    }
+
     public override string ToString()
     {
         //Disgusting...No time to think of a better way
@@ -90,7 +107,7 @@ public struct OpenDoors
         }
         else if (Left && !Right && !Top && !Bottom) //1000
         {
-            return "←";
+            return "╡";
         }
         else if (!Left && Right && Top && Bottom) //0111
         {
@@ -106,7 +123,7 @@ public struct OpenDoors
         }
         else if (!Left && Right && !Top && !Bottom) //0100
         {
-            return "→";
+            return "╞";
         }
         else if (!Left && !Right && Top && Bottom) //0011
         {
@@ -114,15 +131,15 @@ public struct OpenDoors
         }
         else if (!Left && !Right && Top && !Bottom) //0010
         {
-            return "↑";
+            return "╨";
         }
         else if (!Left && !Right && !Top && Bottom) //0001
         {
-            return "↓";
+            return "╥";
         }
         else //0000
         {
-            return "*";
+            return "W";
         }
     }
 }

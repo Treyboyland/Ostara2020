@@ -102,12 +102,22 @@ public class Room : MonoBehaviour
         CheckDoors();
     }
 
+    public void SetDoors(OpenDoors openDoors)
+    {
+        LeftOpen = openDoors.Left;
+        RightOpen = openDoors.Right;
+        TopOpen = openDoors.Top;
+        BottomOpen = openDoors.Bottom;
+
+        CheckDoors();
+    }
+
     void CheckDoors()
     {
-        SetWalls(leftWalls, leftOpen);
-        SetWalls(rightWalls, rightOpen);
-        SetWalls(topWalls, topOpen);
-        SetWalls(bottomWalls, bottomOpen);
+        SetWalls(leftWalls, LeftOpen);
+        SetWalls(rightWalls, RightOpen);
+        SetWalls(topWalls, TopOpen);
+        SetWalls(bottomWalls, BottomOpen);
     }
 
     void SetWalls(List<Wall> walls, bool open)

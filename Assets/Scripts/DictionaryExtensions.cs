@@ -31,7 +31,7 @@ public static class DictionaryExtensions
 
                 if (!grid.ContainsKey(pos))
                 {
-                    sb.Append("u");
+                    sb.Append("█");
                 }
                 else
                 {
@@ -45,22 +45,56 @@ public static class DictionaryExtensions
         return sb.ToString();
     }
 
-    public static Vector2Int AddRoom(this Dictionary<Vector2Int, OpenDoors> grid, Vector2Int position, Room.PlayerExit direction)
+    public static string AsMap(this Dictionary<Vector2Int, OpenDoors> grid, Vector2Int goal)
     {
-        if (!grid.ContainsKey(position))
+        //O(x*y)
+        int minX = int.MaxValue;
+        int maxX = int.MinValue;
+        int maxY = int.MinValue;
+        int minY = int.MaxValue;
+        foreach (var key in grid.Keys)
         {
-            OpenDoors doors = new OpenDoors();
-            doors.OpenDoor(direction);
-            grid.Add(position, doors);
-        }
-        else
-        {
-            var doors = grid[position];
-            doors.OpenDoor(direction);
-            grid[position] = doors;
+            minX = Mathf.Min(minX, key.x);
+            minY = Mathf.Min(minY, key.y);
+            maxX = Mathf.Max(maxX, key.x);
+            maxY = Mathf.Max(maxY, key.y);
         }
 
-        Vector2Int move = new Vector2Int();
+        StringBuilder sb = new StringBuilder();
+        sb.Append("Map: (" + minX + ", " + minY + ") → (" + maxX + ", " + maxY + ")\r\n");
+        for (int y = maxY; y >= minY; y--)
+        {
+            for (int x = minX; x <= maxX; x++)
+            {
+                var pos = new Vector2Int(x, y);
+
+                if (!grid.ContainsKey(pos))
+                {
+                    sb.Append("█");
+                }
+                else if (pos == new Vector2Int())
+                {
+                    sb.Append("╳");
+                }
+                else if (pos == goal)
+                {
+                    sb.Append('╳');
+                }
+                else
+                {
+                    sb.Append(grid[pos]);
+                }
+            }
+
+            sb.Append("\r\n");
+        }
+
+        return sb.ToString();
+    }
+
+    public static Vector2Int GetAddition(this Room.PlayerExit direction)
+    {
+        Vector2Int move = new Vector2Int(0, 0);
         if (direction == Room.PlayerExit.TOP)
         {
             move.y = 1;
@@ -78,38 +112,97 @@ public static class DictionaryExtensions
             move.x = 1;
         }
 
-        position += move;
+        return move;
+    }
 
+    public static Vector2Int AddRoom(this Dictionary<Vector2Int, OpenDoors> grid, Vector2Int position, Room.PlayerExit direction)
+    {
         if (!grid.ContainsKey(position))
         {
-            OpenDoors newDoors = new OpenDoors(direction.GetOppositeExit());
-            grid.Add(position, newDoors);
+            OpenDoors doors = new OpenDoors();
+            doors.OpenDoor(direction);
+            grid.Add(position, doors);
         }
         else
         {
             var doors = grid[position];
-            doors.OpenDoor(direction.GetOppositeExit());
+            doors.OpenDoor(direction);
             grid[position] = doors;
         }
 
-        Debug.Log("" + position + ": " + direction);
-        return position;
+        var newPosition = position + GetAddition(direction);
+        var oppositeDirection = direction.GetOppositeExit();
+
+        if (!grid.ContainsKey(newPosition))
+        {
+            OpenDoors newDoors = new OpenDoors(oppositeDirection);
+            grid.Add(newPosition, newDoors);
+        }
+        else
+        {
+            var doors = grid[newPosition];
+            doors.OpenDoor(oppositeDirection);
+            grid[newPosition] = doors;
+        }
+
+        //Debug.Log("" + position + ": " + direction + ": " + newPosition);
+        return newPosition;
     }
 
     public static void Traverse(this Dictionary<Vector2Int, OpenDoors> grid, string path)
     {
-        Vector2Int origin = new Vector2Int();
+        Vector2Int origin = new Vector2Int(0, 0);
         StringBuilder sb = new StringBuilder("Errors\r\n");
-        foreach(var dir in path)
+        foreach (var dir in path)
         {
+            var exit = dir.GetExit();
             if (!grid.ContainsKey(origin))
             {
-                sb.Append("Grid does not have " + origin);
+                sb.Append("Grid does not have " + origin + "\r\n");
+            }
+            else if (!grid[origin].IsOpen(exit))
+            {
+                sb.Append("" + origin + "Does not have open door: " + exit + "\r\n");
+            }
+            else if (!grid.ContainsKey(origin + exit.GetAddition()))
+            {
+                sb.Append("Connecting room: " + (origin + exit.GetAddition()) + " does not exist.\r\n");
+            }
+            else if (!grid[origin + exit.GetAddition()].IsOpen(exit.GetOppositeExit()))
+            {
+                sb.Append("Connecting room: " + (origin + exit.GetAddition()) + " does not connect with room " + origin + "\r\n");
             }
 
-            var exit = dir.GetExit();
-
+            origin += exit.GetAddition();
         }
+        sb.Append("Path: " + path);
+        Debug.Log(sb.ToString());
+    }
+
+    public static Vector2Int Adjust(this Vector2Int origin, string path)
+    {
+        Vector2Int toReturn = new Vector2Int(origin.x, origin.y);
+        foreach (var dir in path)
+        {
+            toReturn = toReturn.Adjust(dir.GetExit());
+        }
+
+        return toReturn;
+    }
+
+    public static Vector2Int Adjust(this Vector2Int origin, Room.PlayerExit direction)
+    {
+        return origin + direction.GetAddition();
+    }
+
+    public static Vector2Int Adjust(this Vector2Int origin, List<Room.PlayerExit> path)
+    {
+        Vector2Int toReturn = new Vector2Int(origin.x, origin.y);
+        foreach (var dir in path)
+        {
+            toReturn = toReturn.Adjust(dir);
+        }
+        return toReturn;
     }
 }
 

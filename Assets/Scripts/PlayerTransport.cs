@@ -13,6 +13,8 @@ public class PlayerTransport : MonoBehaviour
 
     Player player;
 
+    public PlayerExitEvent OnPlayerTransported = new PlayerExitEvent();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,7 +72,9 @@ public class PlayerTransport : MonoBehaviour
             {
                 pos.x *= -1;
             }
+            Debug.Log("Moving player to position: " + pos);
             player.transform.position = pos;
+            OnPlayerTransported.Invoke(exit);
         }
     }
 }
