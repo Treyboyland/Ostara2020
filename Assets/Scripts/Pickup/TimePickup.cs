@@ -11,6 +11,9 @@ public class TimePickup : Pickup
 
     public Vector3Event OnPickupAtLocation = new Vector3Event();
 
+    [SerializeField]
+    protected AudioClip clip;
+
     protected void Start()
     {
         if (timer == null)
@@ -26,6 +29,14 @@ public class TimePickup : Pickup
 
     protected override void CompleteAction(Collider2D other)
     {
+        if (OneOffSoundPool.Instance != null)
+        {
+            var sound = OneOffSoundPool.Instance.GetObject();
+            sound.Clip = clip;
+            sound.Volume = 1.0f;
+            sound.gameObject.SetActive(true);
+        }
+
         timer.OnAddTime.Invoke(timeAdded);
         OnPickupAtLocation.Invoke(transform.position);
         gameObject.SetActive(false);

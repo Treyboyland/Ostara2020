@@ -74,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fdc387318358199478f770eb0a9d683d, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: dd75b707e572001448583ae0a897b5f6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,6 +101,8 @@ MonoBehaviour:
   secondsInvincible: 3
   audioSource: {fileID: 1676507891}
   clip: {fileID: 8300000, guid: 7f33b9c8777023d40bfc907dbfef015a, type: 3}
+  goodClipInv: {fileID: 8300000, guid: eb0f097aa2361754c84be5189d08bc86, type: 3}
+  badClipInv: {fileID: 8300000, guid: 7f33b9c8777023d40bfc907dbfef015a, type: 3}
 --- !u!50 &6034235436350854432
 Rigidbody2D:
   serializedVersion: 4
@@ -146,7 +148,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.94, y: 0.73}
   m_EdgeRadius: 0
 --- !u!82 &1676507891
 AudioSource:

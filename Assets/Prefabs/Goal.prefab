@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeAdded: 3600
+  clip: {fileID: 8300000, guid: c31a8f1cb3e09c24dbfa644405d8bcd3, type: 3}
 --- !u!95 &6290632475308728239
 Animator:
   serializedVersion: 3

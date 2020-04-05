@@ -39,6 +39,7 @@ public class GameTimer : MonoBehaviour
         OnSubtractTime.AddListener((toSubtract) =>
         {
             timeRemaining = Mathf.Max(timeRemaining - toSubtract, 0);
+            OnTimeUpdated.Invoke(timeRemaining);
         });
 
         OnAddTime.AddListener((toAdd) =>

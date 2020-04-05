@@ -11,7 +11,10 @@ GameObject:
   - component: {fileID: 5624546093732484247}
   - component: {fileID: 5624546093732484246}
   - component: {fileID: 5624546093732484244}
-  - component: {fileID: 5624546093732484245}
+  - component: {fileID: 3818058910183706345}
+  - component: {fileID: 2991854594949079849}
+  - component: {fileID: 198705036192468657}
+  - component: {fileID: 3623411017543121817}
   m_Layer: 0
   m_Name: Vampire
   m_TagString: Untagged
@@ -69,9 +72,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -2027728879
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e3ae4e509a9136e4db5bc1eb5a5ad969, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -128,7 +131,47 @@ PolygonCollider2D:
       - {x: 0.28197584, y: -0.38555264}
       - {x: 0.49123538, y: -0.38662732}
       - {x: 0.5, y: 0.02}
---- !u!114 &5624546093732484245
+--- !u!95 &3818058910183706345
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5624546093732484249}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0b3493a4c69e93b4f83aae047823d012, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!50 &2991854594949079849
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5624546093732484249}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &198705036192468657
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,8 +180,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 5624546093732484249}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 211748c4ef2a4204ba03c557b5f5e857, type: 3}
+  m_Script: {fileID: 11500000, guid: 7fa36f9bf53d8324798e51667542f412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsToStun: 2
+  vampire: {fileID: 3623411017543121817}
+  speed: 3
+  secondsToWait: 3
+  secondsToWaitPursue: 0.5
+  secondsToPursue: 1
+  rb2d: {fileID: 2991854594949079849}
+--- !u!114 &3623411017543121817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5624546093732484249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b5eb4f58e5302547a6a903fa9194082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondsToTake: 2
   isImmortal: 1
