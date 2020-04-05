@@ -11,6 +11,6 @@ public class GoalPickup : TimePickup
         timer.OnAddTime.Invoke(timeAdded);
         timer.OnStopTime.Invoke();
         OnPickupAtLocation.Invoke(transform.position);
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 }

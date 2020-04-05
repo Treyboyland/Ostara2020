@@ -28,6 +28,7 @@ public class EndGameStuff : MonoBehaviour
             winText.SetActive(false);
             loseText.SetActive(true);
             toActivate.SetActive(true);
+            player.IsGameOver = true;
         });
         player.OnPlayerWinsGame.AddListener(() =>
         {

@@ -61,9 +61,17 @@ public class Player : MonoBehaviour
     [SerializeField]
     AudioClip clip;
 
+    [SerializeField]
+    AudioClip goodClipInv;
+
+    [SerializeField]
+    AudioClip badClipInv;
+
     public NullEvent OnPlayerWinsGame = new NullEvent();
 
     public FloatEvent OnDamagePlayer = new FloatEvent();
+
+    public BoolEvent OnMakePlayerInvincible = new BoolEvent();
 
     // Start is called before the first frame update
     void Start()
@@ -76,6 +84,14 @@ public class Player : MonoBehaviour
                 audioSource.PlayOneShot(clip);
                 StartCoroutine(BeInvincible());
                 StartCoroutine(BeStunned(seconds));
+            }
+        });
+        OnMakePlayerInvincible.AddListener((isGood) =>
+        {
+            if (!IsInvincible)
+            {
+                audioSource.PlayOneShot(isGood ? goodClipInv : badClipInv);
+                StartCoroutine(BeInvincible());
             }
         });
         rb2d = GetComponent<Rigidbody2D>();

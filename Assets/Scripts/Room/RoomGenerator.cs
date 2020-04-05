@@ -24,6 +24,15 @@ public class RoomGenerator : MonoBehaviour
     int maxDistance = 0;
 
     [SerializeField]
+    Vector2Int roomNumRange;
+
+    [SerializeField]
+    int maxIterations;
+
+    [SerializeField]
+    float radialProbability;
+
+    [SerializeField]
     PlayerTransport transport;
 
     Vector2Int currentLocation = new Vector2Int();
@@ -64,14 +73,19 @@ public class RoomGenerator : MonoBehaviour
     void CreateDungeon()
     {
         Vector2Int origin = new Vector2Int();
-        for (int i = 0; i < 10; i++)
+        int goalIteration = UnityEngine.Random.Range(maxIterations / 2, maxIterations); //Further away from start
+        for (int i = 0; i < maxIterations; i++)
         {
-            string path = GenerateMap(origin, UnityEngine.Random.Range(5, 31));
-            if (i == 0)
+            string path = GenerateMap(origin, UnityEngine.Random.Range(roomNumRange.x, roomNumRange.y));
+            if (i == goalIteration)
             {
                 goalLocation = origin.Adjust(path);
             }
-            origin = origin.Adjust(path.Substring(0, UnityEngine.Random.Range(1, path.Length)));
+            if (!(UnityEngine.Random.Range(0.0f, 1.0f) < radialProbability))
+            {
+                //Move origin of stuff, or stay
+                origin = origin.Adjust(path.Substring(0, UnityEngine.Random.Range(1, path.Length)));
+            }
         }
 
         Debug.Log("\r\n" + map.AsMap());
@@ -116,7 +130,7 @@ public class RoomGenerator : MonoBehaviour
 
     void InstantiateNewRoom(Room.PlayerExit direction)
     {
-        Debug.Log(direction);
+        //Debug.Log(direction);
         GetNewRoom(currentLocation.Adjust(direction));
     }
 }
