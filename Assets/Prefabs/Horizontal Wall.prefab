@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 4009618818457266737, guid: e626a9ea57d6f06418ee5bd8272ca273,
         type: 3}
       propertyPath: openY
-      value: 6
+      value: 6.75
       objectReference: {fileID: 0}
     - target: {fileID: 4009618818457266737, guid: e626a9ea57d6f06418ee5bd8272ca273,
         type: 3}
