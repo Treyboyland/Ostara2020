@@ -8,12 +8,32 @@ public class EndGameStuff : MonoBehaviour
     GameObject toActivate;
 
     [SerializeField]
+    GameObject winText;
+
+    [SerializeField]
+    GameObject loseText;
+
+    [SerializeField]
+    Player player;
+
+    [SerializeField]
     GameTimer timer;
 
     // Start is called before the first frame update
     void Start()
     {
         toActivate.SetActive(false);
-        timer.OnEndTimeReached.AddListener(() => toActivate.SetActive(true));
+        timer.OnEndTimeReached.AddListener(() =>
+        {
+            winText.SetActive(false);
+            loseText.SetActive(true);
+            toActivate.SetActive(true);
+        });
+        player.OnPlayerWinsGame.AddListener(() =>
+        {
+            winText.SetActive(true);
+            loseText.SetActive(false);
+            toActivate.SetActive(true);
+        });
     }
 }

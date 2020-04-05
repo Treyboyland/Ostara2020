@@ -5,13 +5,13 @@ using UnityEngine;
 public class TimePickup : Pickup
 {
     [SerializeField]
-    float timeAdded;
+    protected float timeAdded;
 
-    static GameTimer timer;
+    protected static GameTimer timer;
 
     public Vector3Event OnPickupAtLocation = new Vector3Event();
 
-    private void Start()
+    protected void Start()
     {
         if (timer == null)
         {

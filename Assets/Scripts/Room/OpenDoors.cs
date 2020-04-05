@@ -111,7 +111,7 @@ public struct OpenDoors
         }
         else if (!Left && Right && Top && Bottom) //0111
         {
-            return "╩";
+            return "╠";
         }
         else if (!Left && Right && Top && !Bottom) //0110
         {

@@ -10,6 +10,9 @@ public class UiTimer : MonoBehaviour
     [SerializeField]
     GameTimer timer;
 
+    [SerializeField]
+    Animator animator;
+
     TextMeshProUGUI textBox;
 
     // Start is called before the first frame update
@@ -21,6 +24,7 @@ public class UiTimer : MonoBehaviour
 
     void UpdateTime(float time)
     {
+        animator.SetFloat("Time", time);
         TimeSpan ts = new TimeSpan(0, 0, 0, (int)time, (int)((time % 1) * 1000)); //Dirty, but doesn't need to be totally precise
 
         if (ts.Hours == 0 && ts.Minutes == 0)

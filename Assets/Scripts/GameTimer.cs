@@ -18,10 +18,16 @@ public class GameTimer : MonoBehaviour
 
     public FloatEvent OnSetNewMultiplier = new FloatEvent();
 
+    public NullEvent OnStopTime = new NullEvent();
+
+    public NullEvent OnStartTime = new NullEvent();
+
     float timeRemaining = 0;
 
     [SerializeField]
     float timeMultiplier = 1.0f;
+
+    bool timeStopped = false;
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -38,12 +44,16 @@ public class GameTimer : MonoBehaviour
         OnAddTime.AddListener((toAdd) =>
         {
             timeRemaining += toAdd;
+            OnTimeUpdated.Invoke(timeRemaining);
         });
 
         OnSetNewMultiplier.AddListener((mult) =>
         {
             timeMultiplier = mult;
         });
+
+        OnStopTime.AddListener(() => timeStopped = true);
+        OnStartTime.AddListener(() => timeStopped = false);
 
         StartCoroutine(CountDown());
     }
@@ -52,8 +62,11 @@ public class GameTimer : MonoBehaviour
     {
         while (timeRemaining != 0)
         {
-            timeRemaining = Mathf.Max(0, timeRemaining - Time.deltaTime * timeMultiplier);
-            OnTimeUpdated.Invoke(timeRemaining);
+            if (!timeStopped)
+            {
+                timeRemaining = Mathf.Max(0, timeRemaining - Time.deltaTime * timeMultiplier);
+                OnTimeUpdated.Invoke(timeRemaining);
+            }
             //Debug.LogWarning(timeRemaining);
             yield return null;
         }

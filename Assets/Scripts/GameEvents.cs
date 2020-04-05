@@ -14,3 +14,5 @@ public class IntEvent : UnityEvent<int> { }
 public class Vector3Event : UnityEvent<Vector3> { }
 
 public class PlayerExitEvent : UnityEvent<Room.PlayerExit> { }
+
+public class RoomDiscoveredEvent : UnityEvent<Dictionary<Vector2Int, OpenDoors>, Dictionary<Vector2Int, Room>> { }

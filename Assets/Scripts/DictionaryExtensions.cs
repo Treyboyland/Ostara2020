@@ -45,6 +45,45 @@ public static class DictionaryExtensions
         return sb.ToString();
     }
 
+    public static string AsMap(this Dictionary<Vector2Int, OpenDoors> grid, Dictionary<Vector2Int, Room> discovered)
+    {
+        //O(x*y)
+        int minX = int.MaxValue;
+        int maxX = int.MinValue;
+        int maxY = int.MinValue;
+        int minY = int.MaxValue;
+        foreach (var key in grid.Keys)
+        {
+            minX = Mathf.Min(minX, key.x);
+            minY = Mathf.Min(minY, key.y);
+            maxX = Mathf.Max(maxX, key.x);
+            maxY = Mathf.Max(maxY, key.y);
+        }
+
+        StringBuilder sb = new StringBuilder();
+        sb.Append("Map: (" + minX + ", " + minY + ") → (" + maxX + ", " + maxY + ")\r\n");
+        for (int y = maxY; y >= minY; y--)
+        {
+            for (int x = minX; x <= maxX; x++)
+            {
+                var pos = new Vector2Int(x, y);
+
+                if (!grid.ContainsKey(pos) || !discovered.ContainsKey(pos))
+                {
+                    sb.Append("█");
+                }
+                else
+                {
+                    sb.Append(grid[pos]);
+                }
+            }
+
+            sb.Append("\r\n");
+        }
+
+        return sb.ToString();
+    }
+
     public static string AsMap(this Dictionary<Vector2Int, OpenDoors> grid, Vector2Int goal)
     {
         //O(x*y)

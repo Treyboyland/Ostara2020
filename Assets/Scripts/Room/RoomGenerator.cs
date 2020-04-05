@@ -30,6 +30,8 @@ public class RoomGenerator : MonoBehaviour
 
     Vector2Int goalLocation = new Vector2Int();
 
+    public RoomDiscoveredEvent OnNewRoomDiscovered = new RoomDiscoveredEvent();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -105,6 +107,7 @@ public class RoomGenerator : MonoBehaviour
                 currentRoom = Instantiate(possibleRooms[UnityEngine.Random.Range(0, possibleRooms.Count)]);
             }
             chosenRooms.Add(currentLocation, currentRoom);
+            OnNewRoomDiscovered.Invoke(map, chosenRooms);
         }
 
         currentRoom.SetDoors(map[currentLocation]);
