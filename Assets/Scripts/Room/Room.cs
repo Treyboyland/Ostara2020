@@ -120,6 +120,6 @@ public class Room : MonoBehaviour
 
     public void InvokePlayerExit(PlayerExit exit)
     {
-
+        OnPlayerExit.Invoke(exit);
     }
 }
