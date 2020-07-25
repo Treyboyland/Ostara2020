@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class RoomGenerator : MonoBehaviour
+public class RoomGenerator : RoomGeneratorAbstract
 {
     [SerializeField]
     List<Room> possibleRooms = new List<Room>();
 
     [SerializeField]
-    Room goalRoom;
+    Room goalRoom = null;
 
     [SerializeField]
-    Room startRoom;
+    Room startRoom = null;
 
     Dictionary<Vector2Int, OpenDoors> map = new Dictionary<Vector2Int, OpenDoors>();
 
@@ -21,25 +21,20 @@ public class RoomGenerator : MonoBehaviour
     Room currentRoom;
 
     [SerializeField]
-    int maxDistance = 0;
+    Vector2Int roomNumRange = new Vector2Int();
 
     [SerializeField]
-    Vector2Int roomNumRange;
+    int maxIterations = 0;
 
     [SerializeField]
-    int maxIterations;
+    float radialProbability = 0;
 
     [SerializeField]
-    float radialProbability;
-
-    [SerializeField]
-    PlayerTransport transport;
+    PlayerTransport transport = null;
 
     Vector2Int currentLocation = new Vector2Int();
 
     Vector2Int goalLocation = new Vector2Int();
-
-    public RoomDiscoveredEvent OnNewRoomDiscovered = new RoomDiscoveredEvent();
 
     // Start is called before the first frame update
     void Start()

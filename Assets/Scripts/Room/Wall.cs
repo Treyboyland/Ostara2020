@@ -5,10 +5,12 @@ using UnityEngine;
 public class Wall : MonoBehaviour
 {
     [SerializeField]
-    float openY;
+    float openY = 0;
 
     [SerializeField]
-    float closedY;
+    float closedY = 0;
+
+    public bool IsDestructable = false;
 
     public void SetOpen(bool open)
     {

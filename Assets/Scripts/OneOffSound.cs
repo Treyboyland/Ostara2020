@@ -5,7 +5,7 @@ using UnityEngine;
 public class OneOffSound : MonoBehaviour
 {
     [SerializeField]
-    AudioSource audioSource;
+    AudioSource audioSource = null;
 
     public AudioClip Clip { get; set; }
 

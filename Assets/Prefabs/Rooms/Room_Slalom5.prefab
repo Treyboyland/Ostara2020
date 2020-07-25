@@ -353,6 +353,11 @@ PrefabInstance:
       propertyPath: topWalls.Array.data[1]
       value: 
       objectReference: {fileID: 8000097503868509305}
+    - target: {fileID: 4780067651590904856, guid: c80278830d7d305458a197dab62221b9,
+        type: 3}
+      propertyPath: roomDifficulty
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6168186154106896873, guid: c80278830d7d305458a197dab62221b9,
         type: 3}
       propertyPath: exitType

@@ -412,6 +412,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room_V5
       objectReference: {fileID: 0}
+    - target: {fileID: 7668440041265675852, guid: 69b34c70d4f3b234d8683a04b9b612ba,
+        type: 3}
+      propertyPath: roomDifficulty
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69b34c70d4f3b234d8683a04b9b612ba, type: 3}
 --- !u!4 &2919412612310542405 stripped

@@ -67,6 +67,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room_Columns5
       objectReference: {fileID: 0}
+    - target: {fileID: 3817239092969622360, guid: d13ead63295763a48b6938a8b831fbde,
+        type: 3}
+      propertyPath: roomDifficulty
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13ead63295763a48b6938a8b831fbde, type: 3}
 --- !u!4 &1007725983408771672 stripped

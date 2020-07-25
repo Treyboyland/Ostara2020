@@ -195,6 +195,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -2.15
       objectReference: {fileID: 0}
+    - target: {fileID: 1675203215779097808, guid: f5ec52baf6f94ab4d8358588b80b2d64,
+        type: 3}
+      propertyPath: roomDifficulty
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2427955483443435807, guid: f5ec52baf6f94ab4d8358588b80b2d64,
         type: 3}
       propertyPath: m_LocalPosition.x

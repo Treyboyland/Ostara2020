@@ -5,10 +5,10 @@ using UnityEngine;
 public class RoomExitTrigger : MonoBehaviour
 {
     [SerializeField]
-    Room room;
+    Room room = null;
 
     [SerializeField]
-    Room.PlayerExit exitType;
+    Room.PlayerExit exitType = Room.PlayerExit.BOTTOM;
 
     private void OnTriggerEnter2D(Collider2D other)
     {

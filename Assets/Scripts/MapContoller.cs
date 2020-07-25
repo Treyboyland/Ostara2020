@@ -6,19 +6,19 @@ using TMPro;
 public class MapContoller : MonoBehaviour
 {
     [SerializeField]
-    RoomGenerator generator;
+    RoomGeneratorAbstract generator = null;
 
     [SerializeField]
-    Player player;
+    Player player = null;
 
     [SerializeField]
-    GameObject map;
+    GameObject map = null;
 
     [SerializeField]
-    TextMeshProUGUI textBox;
+    TextMeshProUGUI textBox = null;
 
     [SerializeField]
-    GameTimer timer;
+    GameTimer timer = null;
 
     bool canShow = true;
 
@@ -29,7 +29,7 @@ public class MapContoller : MonoBehaviour
         timer.OnEndTimeReached.AddListener(() => canShow = false);
         generator.OnNewRoomDiscovered.AddListener((grid, discovered) =>
         {
-            textBox.text = grid.AsMap(discovered);
+            textBox.text = /*grid.AsMap(discovered);*/ grid.AsMap();
         });
         map.SetActive(false);
     }

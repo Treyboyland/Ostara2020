@@ -7,7 +7,7 @@ public class PlayerTransport : MonoBehaviour
     Room room;
 
     [SerializeField]
-    float secondsBetweenRoomMoves;
+    float secondsBetweenRoomMoves = 0;
 
     float elapsed;
 

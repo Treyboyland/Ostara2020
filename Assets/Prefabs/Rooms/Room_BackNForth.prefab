@@ -106,10 +106,20 @@ PrefabInstance:
       propertyPath: leftOpen
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 474931097852425345, guid: 82780b6bd9c84c745b1f5585e3212865,
+        type: 3}
+      propertyPath: roomDifficulty
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1406814640517526219, guid: 82780b6bd9c84c745b1f5585e3212865,
         type: 3}
       propertyPath: m_LocalScale.y
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2303309792712231492, guid: 82780b6bd9c84c745b1f5585e3212865,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 3522920729491796557, guid: 82780b6bd9c84c745b1f5585e3212865,
         type: 3}

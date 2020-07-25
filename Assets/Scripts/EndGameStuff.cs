@@ -5,22 +5,22 @@ using UnityEngine;
 public class EndGameStuff : MonoBehaviour
 {
     [SerializeField]
-    GameObject toActivate;
+    GameObject toActivate = null;
 
     [SerializeField]
-    GameObject winText;
+    GameObject winText = null;
 
     [SerializeField]
-    GameObject loseText;
+    GameObject loseText = null;
 
     [SerializeField]
-    Player player;
+    Player player = null;
 
     [SerializeField]
-    GameTimer timer;
+    GameTimer timer = null;
 
     [SerializeField]
-    AudioClip clip;
+    AudioClip clip = null;
 
     // Start is called before the first frame update
     void Start()

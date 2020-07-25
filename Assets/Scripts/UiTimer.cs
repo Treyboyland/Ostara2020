@@ -8,10 +8,10 @@ using System;
 public class UiTimer : MonoBehaviour
 {
     [SerializeField]
-    GameTimer timer;
+    GameTimer timer = null;
 
     [SerializeField]
-    Animator animator;
+    Animator animator = null;
 
     TextMeshProUGUI textBox;
 

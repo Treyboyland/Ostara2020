@@ -8,7 +8,19 @@ public class Player : MonoBehaviour
     Rigidbody2D rb2d;
 
     [SerializeField]
-    float speed;
+    float speed = 0;
+
+    public float Speed
+    {
+        get
+        {
+            return speed;
+        }
+        set
+        {
+            speed = value;
+        }
+    }
 
     bool canMove = true;
 
@@ -53,19 +65,34 @@ public class Player : MonoBehaviour
     }
 
     [SerializeField]
-    float secondsInvincible;
+    float secondsInvincible = 0;
 
     [SerializeField]
-    AudioSource audioSource;
+    AudioSource audioSource = null;
 
     [SerializeField]
-    AudioClip clip;
+    AudioClip clip = null;
 
     [SerializeField]
-    AudioClip goodClipInv;
+    AudioClip goodClipInv = null;
 
     [SerializeField]
-    AudioClip badClipInv;
+    AudioClip badClipInv = null;
+
+    [SerializeField]
+    int lightAmount = 0;
+
+    public int LightAmount
+    {
+        get
+        {
+            return lightAmount;
+        }
+        set
+        {
+            lightAmount = value;
+        }
+    }
 
     public NullEvent OnPlayerWinsGame = new NullEvent();
 
@@ -73,9 +100,14 @@ public class Player : MonoBehaviour
 
     public BoolEvent OnMakePlayerInvincible = new BoolEvent();
 
+    public PlayerEvent OnAttemptLightCast = new PlayerEvent();
+
     // Start is called before the first frame update
+
+    private float initialSpeed = 0.0f;
     void Start()
     {
+        initialSpeed = speed;
         OnPlayerWinsGame.AddListener(() => IsGameOver = true);
         OnDamagePlayer.AddListener((seconds) =>
         {
@@ -95,6 +127,14 @@ public class Player : MonoBehaviour
             }
         });
         rb2d = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("CastLight"))
+        {
+            OnAttemptLightCast.Invoke(this);
+        }
     }
 
     // Update is called once per frame
@@ -133,5 +173,10 @@ public class Player : MonoBehaviour
             yield return null;
         }
         CanMove = true;
+    }
+
+    public void ReturnToNormalSpeed()
+    {
+        speed = initialSpeed;
     }
 }

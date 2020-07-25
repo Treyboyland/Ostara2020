@@ -5,22 +5,22 @@ using UnityEngine;
 public class VampireMovement : MonoBehaviour
 {
     [SerializeField]
-    Vampire vampire;
+    Vampire vampire = null;
 
     [SerializeField]
-    float speed;
+    float speed = 0;
 
     [SerializeField]
-    float secondsToWait;
+    float secondsToWait = 0;
 
     [SerializeField]
-    float secondsToWaitPursue;
+    float secondsToWaitPursue = 0;
 
     [SerializeField]
-    float secondsToPursue;
+    float secondsToPursue = 0;
 
     [SerializeField]
-    Rigidbody2D rb2d;
+    Rigidbody2D rb2d = null;
 
     bool listenerAdded = false;
 

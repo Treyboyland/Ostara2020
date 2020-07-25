@@ -6,13 +6,7 @@ using UnityEngine.SceneManagement;
 public class QuitToTitle : MonoBehaviour
 {
     [SerializeField]
-    string sceneName;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+    string sceneName = null;
 
     // Update is called once per frame
     void Update()

@@ -8,10 +8,10 @@ public class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour
     bool shouldParentToThisObject = false;
 
     [SerializeField]
-    int initialSize;
+    int initialSize = 0;
 
     [SerializeField]
-    T objectPrefab;
+    T objectPrefab = null;
 
     List<T> objects = new List<T>();
 
@@ -44,6 +44,19 @@ public class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour
         objects.Add(instantiatedObject);
 
         return instantiatedObject;
+    }
+
+    public bool AreAnyObjectsActive()
+    {
+        foreach(var obj in objects)
+        {
+            if(obj.gameObject.activeInHierarchy)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public T GetObject()

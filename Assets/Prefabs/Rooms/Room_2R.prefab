@@ -1080,6 +1080,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 6.75
       objectReference: {fileID: 0}
+    - target: {fileID: 7106733536889429757, guid: 6411ad17fa486944dae90c19a9bd2e7c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 29
+      objectReference: {fileID: 0}
     - target: {fileID: 7985218609099138674, guid: 6411ad17fa486944dae90c19a9bd2e7c,
         type: 3}
       propertyPath: m_LocalScale.y
@@ -1104,6 +1109,11 @@ PrefabInstance:
         type: 3}
       propertyPath: leftOpen
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8917262652676988984, guid: 6411ad17fa486944dae90c19a9bd2e7c,
+        type: 3}
+      propertyPath: roomDifficulty
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6411ad17fa486944dae90c19a9bd2e7c, type: 3}

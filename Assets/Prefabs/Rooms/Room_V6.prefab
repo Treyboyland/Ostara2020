@@ -28,7 +28,7 @@ Transform:
   m_LocalPosition: {x: 5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5608251577215180611}
+  m_Father: {fileID: 1861602080385738182}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1395598745377201420
@@ -86,7 +86,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 5608251577215180611}
+    m_TransformParent: {fileID: 1861602080385738182}
     m_Modifications:
     - target: {fileID: 9039691845111986104, guid: 72fe33f19f1c37944bc80f651ff31af7,
         type: 3}
@@ -217,9 +217,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room_V6
       objectReference: {fileID: 0}
+    - target: {fileID: 7668440041265675852, guid: 69b34c70d4f3b234d8683a04b9b612ba,
+        type: 3}
+      propertyPath: roomDifficulty
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69b34c70d4f3b234d8683a04b9b612ba, type: 3}
---- !u!4 &5608251577215180611 stripped
+--- !u!4 &1861602080385738182 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6053187693744649365, guid: 69b34c70d4f3b234d8683a04b9b612ba,
     type: 3}

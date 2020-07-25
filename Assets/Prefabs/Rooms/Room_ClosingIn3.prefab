@@ -214,6 +214,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1173612085869945793, guid: e0797689d784ebd4299be38236cd9b2b,
+        type: 3}
+      propertyPath: roomDifficulty
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3324635421581633816, guid: e0797689d784ebd4299be38236cd9b2b,
         type: 3}
       propertyPath: m_LocalPosition.x

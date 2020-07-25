@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Vampire : MonoBehaviour
+public class Vampire : Enemy
 {
     [SerializeField]
-    float secondsToTake;
-
-    [SerializeField]
-    bool isImmortal;
+    float secondsToTake = 0;
 
     static GameTimer timer;
 
@@ -20,7 +17,7 @@ public class Vampire : MonoBehaviour
         return timer != null;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    protected override void OnTriggerEnter2D(Collider2D other)
     {
         var player = other.GetComponent<Player>();
         if (player != null)

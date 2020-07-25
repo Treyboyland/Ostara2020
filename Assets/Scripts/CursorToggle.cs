@@ -5,7 +5,7 @@ using UnityEngine;
 public class CursorToggle : MonoBehaviour
 {
     [SerializeField]
-    bool showCursor;
+    bool showCursor = false;
 
     private void OnEnable()
     {

@@ -32,7 +32,7 @@ Transform:
   - {fileID: 5949054971881338311}
   - {fileID: 5623743678550810856}
   m_Father: {fileID: 762081468072558977}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1412991594554145495
 GameObject:
@@ -66,7 +66,7 @@ Transform:
   - {fileID: 131841521202081130}
   - {fileID: 6198101838281908160}
   m_Father: {fileID: 762081468072558977}
-  m_RootOrder: 18
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7887230080818537580
 GameObject:
@@ -100,7 +100,7 @@ Transform:
   - {fileID: 4683918729608549156}
   - {fileID: 3738776397433720678}
   m_Father: {fileID: 762081468072558977}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &52441076341737449
 PrefabInstance:
@@ -864,10 +864,20 @@ PrefabInstance:
       propertyPath: bottomOpen
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 474931097852425345, guid: 82780b6bd9c84c745b1f5585e3212865,
+        type: 3}
+      propertyPath: roomDifficulty
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1406814640517526219, guid: 82780b6bd9c84c745b1f5585e3212865,
         type: 3}
       propertyPath: m_LocalScale.y
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2303309792712231492, guid: 82780b6bd9c84c745b1f5585e3212865,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3522920729491796557, guid: 82780b6bd9c84c745b1f5585e3212865,
         type: 3}

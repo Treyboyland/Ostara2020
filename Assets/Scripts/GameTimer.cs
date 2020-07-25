@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameTimer : MonoBehaviour
 {
     [SerializeField]
-    float initialTime;
+    float initialTime = 0;
 
 
 

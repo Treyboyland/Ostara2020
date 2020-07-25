@@ -5,12 +5,12 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
-    float secondsToStun;
+    float secondsToStun = 0;
 
     [SerializeField]
-    bool isImmortal;
+    protected bool isImmortal = false;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         var player = other.GetComponent<Player>();
         if (player != null)

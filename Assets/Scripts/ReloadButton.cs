@@ -9,7 +9,7 @@ public class ReloadButton : MonoBehaviour
 {
     [Tooltip("Must match path of scene relative to 'Assets' folder")]
     [SerializeField]
-    string sceneName;
+    string sceneName = null;
 
     Button button;
 

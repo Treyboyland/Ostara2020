@@ -5,19 +5,30 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     [SerializeField]
-    List<Wall> leftWalls;
+    RoomDifficulty roomDifficulty = RoomDifficulty.TRIVIAL;
+
+    public RoomDifficulty Difficulty
+    {
+        get
+        {
+            return roomDifficulty;
+        }
+    }
 
     [SerializeField]
-    List<Wall> rightWalls;
+    List<Wall> leftWalls = null;
 
     [SerializeField]
-    List<Wall> topWalls;
+    List<Wall> rightWalls = null;
 
     [SerializeField]
-    List<Wall> bottomWalls;
+    List<Wall> topWalls = null;
 
     [SerializeField]
-    bool leftOpen;
+    List<Wall> bottomWalls = null;
+
+    [SerializeField]
+    bool leftOpen = false;
 
     public bool LeftOpen
     {
@@ -32,7 +43,7 @@ public class Room : MonoBehaviour
     }
 
     [SerializeField]
-    bool rightOpen;
+    bool rightOpen = false;
 
     public bool RightOpen
     {
@@ -47,7 +58,7 @@ public class Room : MonoBehaviour
     }
 
     [SerializeField]
-    bool topOpen;
+    bool topOpen = false;
 
     public bool TopOpen
     {
@@ -62,7 +73,7 @@ public class Room : MonoBehaviour
     }
 
     [SerializeField]
-    bool bottomOpen;
+    bool bottomOpen = false;
 
     public bool BottomOpen
     {
@@ -76,12 +87,50 @@ public class Room : MonoBehaviour
         }
     }
 
+
     public enum PlayerExit
     {
         TOP,
         RIGHT,
         BOTTOM,
         LEFT
+    }
+
+    public enum RoomDifficulty
+    {
+        /// <summary>
+        /// Rooms with little to no obstacles (e.g. an empty room)
+        /// </summary>
+        /// <returns></returns>
+        TRIVIAL,
+        /// <summary>
+        /// Rooms with perhaps one obstacle
+        /// </summary>
+        /// <returns></returns>
+        EASY,
+        /// <summary>
+        /// Rooms with a few obstacles that the "avarage" player should
+        /// be able to navigate with little difficulty
+        /// </summary>
+        /// <returns></returns>
+        NORMAL,
+        /// <summary>
+        /// Rooms with perhaps a lot of obstacles, 
+        /// </summary>
+        /// <returns></returns>
+        HARD,
+        /// <summary>
+        /// A room that truly tests the player's mastery of the game.
+        /// Riddled with enemies, traps, or obstacles.
+        /// </summary>
+        /// <returns></returns>
+        EXTREME,
+        /// <summary>
+        /// A distinction for rooms that have interesting things inside of them
+        /// that might not fit into any of the other categories
+        /// </summary>
+        /// <returns></returns>
+        SPECIAL,
     }
 
     public PlayerExitEvent OnPlayerExit = new PlayerExitEvent();
